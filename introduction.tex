@@ -1,11 +1,8 @@
-\chapter{Introduction to \musixtex}
+\chapter{\musixtex 的简介}
 
-This chapter is not a tutorial on the use of \musixtex, but instead serves as
-an overview of some of its capabilities, quirks, and history.
+本章不是 \musixtex 的使用教程，而是对它的一些功能、怪癖和历史的概述。
 
-\musixtex\ is a set of macros and fonts which enables music typesetting 
-within the \TeX\ system. It requires as a prerequisite a working
-installation of \TeX.
+\musixtex 是一组能在 \TeX 系统中进行音乐排版的宏和字体。需要先安装 \TeX 它才能工作。
 \musixtex\ might be regarded as the digital equivalent of a box of type. It
 contains symbols for staves, notes, chords, beams, slurs and ornaments,
 ready to be arranged to form a sheet of music. But it must be told how to position
@@ -17,7 +14,7 @@ such decisions be made largely by the preprocessor
 {\underline{\textbf{PMX}}}, which in addition uses a much simpler input
 language than \musixtex.
 
-Lyrics can also be handled by \musixtex. There is a set of primitive
+\musixtex 也可以处理歌词。There is a set of primitive
 commands for this which are described later. But there is also a far
 more adaptable set of macros contained in the extension file
 \verb|musixlyr.tex|, and there is the preprocessor
@@ -25,8 +22,7 @@ more adaptable set of macros contained in the extension file
 {\underline{\mbox{\textbf{M-Tx}}}}\ which provides easy, transparent access to
 these macros.
 
-Most users of \TeX\ are familiar with \LaTeX, a set of \TeX\ macros
-which eases document layout. In fact many may only use \LaTeX.
+\LaTeX 是一组简化文档排版的宏，大多数 \TeX 用户也熟悉 \LaTeX。事实上很多人只使用 \LaTeX。
 Until recently, \LaTeX\ and \musixtex\ coexisted only grudgingly, owing
 primarily to the limited availabily of storage registers. But with modern
 versions of \TeX\ and with the use of e\LaTeX, only a modest increase in
@@ -43,8 +39,8 @@ no better example than this manual, as generated with the files
 \verb|musixdoc.tex| and \verb|musixdoc.sty|. A few further details about such
 nonstandard applications are given in Section~\ref{excerpts}.
 
-\section{Primary features of \musixtex}
- \subsection{Music typesetting is two-dimensional} Written music is not
+\section{\musixtex 的主要特点}
+ \subsection{音乐排版是二维的} Written music is not
 usually a linear sequence of symbols like a literary text. Rather,
 except for unaccompanied single-note instruments like clarinets,
 trumpets and human voices, it has the form of a two-dimensional matrix.
@@ -169,8 +165,8 @@ putting any sequence of symbols (possibly contained in an \verb|\hbox{...}|) at 
 pitch of any staff of any instrument. This allows any symbol defined in a font
 (letters, math symbols, etc.) to be placed in the score at a position keyed
 to the music both in time (horizontally) and pitch (vertically) on the staff,
-\section{A simple example}
- Before going into more detail, we give below an example of the two first
+\section{一个简单示例}
+在讲解更多细节之前，we give below an example of the two first
 bars of the sonata in \mbox{C-major} KV545 by {\sc Mozart}\index{Mozart, W.A.@{\sc
 Mozart, W.A.}}:
 
@@ -493,7 +489,7 @@ availability of \textbf{PMX}), here is a roadmap for one way to proceed:
  \item Enter the data one \verb|\notes| group at a time, taking care to select the
 relative horizontal spacing for each group (via the macros discussed in Section~\ref{newspacings})
 so as to maintain a consistent relationship between scalable space and note durations.
-This will be discussed in a great deal more detail in Chapter~\ref{preparing}.
+这将在第\ref{preparing}章中更详细地讨论。
  \item \TeX~$\Longrightarrow$ {\tt musixflx} $\Longrightarrow$ \TeX.
  \item Look at the output and decide if you want to have more or fewer
 systems, e.g.,~to fill the page or to get an even number of
@@ -539,7 +535,7 @@ variable length symbols such as slurs to be specified by macros entered at
 their beginning and ending points, rather than having to estimate the
 length of the symbol and enter it at the starting point.
 
- \subsection{Using \texttt{musixflx}}
+ \subsection{使用 \texttt{musixflx}}
 
 On most systems, \verb|musixflx|  can be invoked by typing the name of the program
 and the name of the file to be acted upon; i.e.,
@@ -598,30 +594,29 @@ is repeated in the list.
  \item
 Between \verb|\startpiece| and \verb|\stoppiece| or \verb|\endpiece|,
 end every input line with a either \verb|%| or a command with no arguments
-(including \verb|\relax| and \verb|\en|).
+(including \verb|\relax| and \verb|\en|)。
  \item \verb|\off| must only be used with scalable values, e.g.,
 \verb|\noteskip|, \verb|\elemskip|, \verb|\afterruleskip|, and
- \verb|\beforeruleskip|.
+ \verb|\beforeruleskip|。
  \item Remember that \verb|\qqsk|, \verb|\qsk| and \verb|\hqsk| are scalable, i.e., \verb|\qsk|
-  doesn't necessarily mean exactly one note head width (it depends on \verb|\elemskip|).
+  doesn't necessarily mean exactly one note head width (it depends on \verb|\elemskip|)。
  \item Lyrics and any other non-\musixtex\ text must be put in zero-width boxes
 such as
   \verb|\zcharnote|, \verb|\zchar|, \verb|\rlap|, \verb|\lrlap|, \verb|\llap|,
 \verb|\uptext|, or \verb|\zsong|. Additional specific capabilities for entering
 lyrics are provided by
  \verb|\hardlyrics|, \verb|\hsong|, and---most significantly---the
-text-placement macros defined in \verb|musixlyr.tex| (see Chapter~\ref{lyrics},
-p.~\pageref{lyrics}).
+text-placement macros defined in \verb|musixlyr.tex| （见第\pageref{lyrics}页第\ref{lyrics}章）。
  \item
 Between \verb|\startpiece| and \verb|\stoppiece| or \verb|\endpiece|,
 don't assign hard values to \verb|\noteskip|, \verb|\beforeruleskip|,
-or \verb|\afterruleskip|.
+or \verb|\afterruleskip|。
 \end{enumerate}
 
 
 \section{Further highlights}
  %\check
- \subsection{Key signatures}
+ \subsection{调号}
 \begin{sloppypar}
 A single key signature can be assigned~to~all~instruments,~for~example~by 
 \keyindex{generalsignature}\verb|{-2}|
@@ -721,7 +716,7 @@ in separate files, namely \verb|musixps.tex| itself and
 \verb|mxlyrdoc.pdf| respectively.
 
 
-\section{Installing and Using \musixtex}\label{using}
+\section{\musixtex 的安装和使用}\label{using}
 
 As stated in the preface, 
 the \href{http://icking-music-archive.org/software/indexmt6.html}
@@ -776,7 +771,7 @@ There is a
 hosted by TUG, the \TeX\ Users Group, where you will always find
 someone willing to answer questions and help solve problems.
 
-  \section{A very brief history of \musixtex}
+  \section{\musixtex 极简史}
 The idea of using \TeX\ to typeset music appears to have originated
 around 1987 with the master's thesis of Andrea
 {\sc Steinbach} and Angelika {\sc Schofer}\footnote{Steinbach A. \& Schofer
@@ -804,10 +799,8 @@ Significant enhancements to \musixtex, which have already been mentioned, have b
 by Stanislav {\sc Kneifl} (Type~K Postscript slurs) and
 Rainer {\sc Dunker} (Lyrics handling via \verb|musixlyr.tex|).
 
-Since Dr.~Taupin passed away in 2003, \musixtex\ has been maintained by a 
-varying cast including Olivier {\sc Vogel}, Hiroaki {\sc Morimoto}, 
-Bob {\sc Tennent}, Andre {\sc Van Ryckeghem}, 
-Cornelius {\sc Noack}, and Don {\sc Simons}.
+自 2003 年陶平博士去世以来，\musixtex 的维护者阵容由奥利维尔·沃格尔、森本博明、鲍勃·坦南特、
+安德烈·范·里克格姆、科尔内利乌斯·诺亚克和唐·西蒙斯等人更替。
 
 No discussion of the history of \musixtex\ would be complete without mentioning
 the contributions of Werner {\sc Icking}. From the early days of \mutex\ until
@@ -818,5 +811,3 @@ many third-party enhancements including \textbf{PMX}. In fact he founded the
 mailing list and the archive that now is named in his honor. The web site is
 currently edited by Christian {\sc Mondrup}, the software page by Bob {\sc Tennent},
 and the mailing list by Maurizio {\sc Codogno}.
-
-
